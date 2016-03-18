@@ -153,7 +153,6 @@ class TextAnimationLabel: UILabel,NSLayoutManagerDelegate {
             let characterRange = textLayoutManager.characterRangeForGlyphRange(glyphRange, actualGlyphRange: nil)
             let textContainer = textLayoutManager.textContainerForGlyphAtIndex(index, effectiveRange: nil)
             var glyphRect = textLayoutManager.boundingRectForGlyphRange(glyphRange, inTextContainer: textContainer!)
-            let location = textLayoutManager.locationForGlyphAtIndex(index)
             
             let kerningRange = textLayoutManager.rangeOfNominallySpacedGlyphsContainingIndex(index)
             if kerningRange.location == index && kerningRange.length > 1 {
@@ -170,7 +169,7 @@ class TextAnimationLabel: UILabel,NSLayoutManagerDelegate {
             }
             
             //中间垂直
-            glyphRect.origin.y += location.y - (glyphRect.height/2)+(self.bounds.size.height/2)-(layoutRect.size.height/2)
+            glyphRect.origin.y += (self.bounds.size.height/2)-(layoutRect.size.height/2)
             
             //打印 font的metric信息
 //            let attributedCharacter = attributedString.attributedSubstringFromRange(characterRange)
